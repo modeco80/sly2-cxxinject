@@ -5,6 +5,7 @@
 
 #include <utils/hook/trampoline.hpp>
 
+/// Declare a class hook which takes no parameters.
 #define CLASS_HOOK0(ret, className, funcName)                                          \
 	static class Hook_##className##_##funcName {                                       \
 		HookHandle handle;                                                             \
@@ -21,6 +22,7 @@
 	} hook_##className##_##funcName;                                                   \
 	ret Hook_##className##_##funcName::hookImpl(className* klass)
 
+/// Declare a class hook which takes any amount of parameters.
 #define CLASS_HOOK(ret, className, funcName, ...)                                      \
 	static class Hook_##className##_##funcName {                                       \
 		HookHandle handle;                                                             \
