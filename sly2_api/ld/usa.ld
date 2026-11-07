@@ -1,0 +1,40 @@
+/* C library */
+strlen = 0x0021ed28;
+strcat = 0x0021eda0;
+memcpy = 0x0023320c;
+memset = 0x002333b4;
+sprintf = 0x0021ecd8;
+vsprintf = 0x0021ec60;
+
+/* This is where the stub is loaded **/
+__HOOK_BlobCopy = 0x00c00000;
+
+
+
+/* Important fun */
+
+CProg__End = 0x001c8db8;
+SetPhase = 0x001c2a78;
+
+/* heap manager */
+/* Heap start. Note that we are linked here, but we load (with a stub) at a different spot. */
+_OriginalHeapStart = 0x00472200;
+s_pvGlobalMin = 0x002f6380;
+s_pvHeapMin = 0x002f6384;
+g_pvHeapMax = 0x002f638c;
+
+s_pvStackMin = 0x002f6388;
+s_ipvStackCur = 0x002f639c;
+s_critsectStack = 0x002f6390;
+
+PvAllocClear__FRC8AllocReq = 0x001ae2a0;
+
+StartupMemMgr__Fv = 0x001ae168;
+CritSectInit = 0x0021f028;
+
+/* NOTE this is a contract between the stub and the blob */
+BLOB_LOAD_ADDRESS = _OriginalHeapStart;
+
+
+/* CSw */
+CSw__Render = 0x001cda80;

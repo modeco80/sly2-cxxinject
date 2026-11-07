@@ -1,0 +1,23 @@
+**/attic/
+
+**/bin/
+**/obj/
+.cache/
+
+**/__pycache__
+**/*.egg-info
+
+compile_commands.json
+
+src/freecam/*.pnach
+
+# no good
+tools/cc
+
+tools/mkpatch/build/
+
+# copyrighted
+elf/
+
+# output patches
+/*.xdelta

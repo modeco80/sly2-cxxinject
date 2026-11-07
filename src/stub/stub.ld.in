@@ -1,0 +1,43 @@
+
+/* Include the api ld script file which tells ld addresses */
+INCLUDE ../sly2_api/ld/@REGION@.ld
+
+STUB_LOAD_ADDRESS = __HOOK_BlobCopy;
+
+SECTIONS {
+	. = STUB_LOAD_ADDRESS;
+	_begin = STUB_LOAD_ADDRESS;
+
+	.text ALIGN(4) : {
+		*(.text)
+		*(.text.*)
+    	*(.gnu.linkonce.t*)
+    	. = ALIGN(4);
+	}
+
+	/DISCARD/ : {
+		/* Ignore .reginfo. It is not needed and adds bloat */
+		*(.reginfo)
+	}
+
+	.data : { 
+		*(.data)
+		*(.data.*)
+    	*(.gnu.linkonce.d*)
+    	. = ALIGN(4);
+	 }
+
+	.rodata : {
+		*(.rodata)
+		*(.rodata.*)
+		*(.gnu.linkonce.r*)
+		. = ALIGN(4);
+	}
+	.rdata : { *(.rdata) }
+	.lit8 : { *(.lit8) }
+	.lit4 : { *(.lit4) }
+	.sdata : { *(.sdata) }
+
+	. = ALIGN(4);
+	_end = .;
+}
