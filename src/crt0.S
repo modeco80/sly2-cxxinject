@@ -16,7 +16,20 @@
 
 .global _start
 _start:
-	/* TODO: zerofill our .bss section. */
+
+	/* Zero-fill our .bss section. */
+	la t0, _fbss
+	la t2, _bss_size
+.Lwipebss:
+	/* These two nops correct for EE errata with branch instructions.
+	  PCSX2 does not emulate EE errata but it's still a good idea. */
+	nop
+	nop
+	sb zero, (t0)
+	addi t0, t0, 1
+	addi t1, t1, -1
+	bne t1, zero, .Lwipebss
+	nop
 
 	/* Save registers which are clobbered on the stack. */
 	addiu sp, sp, -0x8

@@ -56,7 +56,9 @@ SECTIONS {
 	.lit4 : { *(.lit4) }
 	.sdata : { *(.sdata) }
 	.sbss : { _fbss = .; *(.sbss) *(.scommon) }
-	.bss : { *(.bss) }
+	.bss : { *(.bss); _ebss = .; }
+
+	_bss_size = _ebss - _fbss;
 
 	. = ALIGN(4);
 	_end = .;

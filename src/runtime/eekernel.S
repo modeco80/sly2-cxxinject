@@ -8,11 +8,14 @@
 
 .macro genSyscall, name, number
 .global \name
+.ent \name
+.type \name function
 \name:
 	li v1, \number
 	syscall
 	jr ra
 	nop
+.end \name
 .endm
 
 genSyscall GetThreadId, 0x2f
