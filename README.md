@@ -21,6 +21,11 @@ Build the patch:
 make
 ```
 
+To build in debug mode (enabling a lot of debug assertions to catch bugs early), do
+```
+make DEBUG=1
+```
+
 # Running
 
 Running PCSX2 with these flags allows running the patched elf with the original Sly 2 disc image:
