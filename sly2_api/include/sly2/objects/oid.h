@@ -8,7 +8,7 @@ enum OID {
     OID_Unknown = 0,
 
     // TODO: Name OIDs.
-    OID_jt = 7,
+    OID_jt = 7
 };
 
 #endif

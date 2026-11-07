@@ -1,7 +1,7 @@
 #ifndef SLY2MOD_SDK_XFORM_H
 #define SLY2MOD_SDK_XFORM_H
 
-#include <common/types.h>
+#include <sly2/types.h>
 
 #ifdef __cplusplus
 extern "C" {

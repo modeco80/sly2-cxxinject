@@ -1,32 +1,20 @@
 #include <utils/log.hpp>
 #include <ml/cxx/string.hpp>
 
-#include <utils/hook/fnhook.hpp>
+#include <utils/hook/classhook.hpp>
 #include <ml/cxx/fixedvec.hpp>
 
-ml::FixedVec<void(*)(), 32> hookList;
+#include <sly2/sw.h>
 
-extern "C" void CSw__Render(void* psw);
-
-class ExecHookPredicate {
-public:
-	bool operator()(void(*pfn)()) {
-		pfn();
-		return true;
+CLASS_HOOK0(void, CSw, Render) {
+	CLo* egg = g_sw.FindObject(0x205, OID_jt, nil(CLo*));
+	if(egg != nil(CLo*)) {
+		utilLogf(LogInfo, "wow it there! Holy fuck! WATER IS REAL!");
 	}
-};
 
-FUNC_HOOK(CSw__Render, void, void* psw) {
-	ExecHookPredicate execHook;
-	hookList.forEach(execHook);
-	return hook_CSw__Render.original(psw);
+	return hook_CSw_Render.original(klass);
 }
 
-void testHook() {
-	//utilLogf(LogInfo, "testHook() called in CSw::Render() hook");
-	// TODO ld symbol
-	*reinterpret_cast<float*>(0x002DE188) = 1.f;
-}
 
 extern "C" int modMain() {
 	utilLogf(LogInfo, "hey lois this is like that one time that i sneaked into the new sly copper game!");
@@ -37,13 +25,10 @@ extern "C" int modMain() {
 		utilLogf(LogInfo, "this should say something: %s %08x", stringTest.cStr(), stringTest.cStr());
 	}
 
-	if(!hook_CSw__Render.hook()) {
+	if(!hook_CSw_Render.hook()) {
 		utilLogf(LogErr, "Couldn't hook CSw::Render()?");
 		return 1;
 	}
-
-	// test
-	hookList.push(testHook);
 
 	return 0;
 

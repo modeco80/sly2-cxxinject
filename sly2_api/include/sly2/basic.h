@@ -61,6 +61,6 @@ public:
 	bool IsDerivedFrom(u32 cidOther);
 };
 
-ML_STATIC_ASSERT(sizeof(CBasic) == 0x10, "Invalid CBasic size");
+ML_STATIC_ASSERT(sizeof(CBasic) == 0x10);
 
 #endif

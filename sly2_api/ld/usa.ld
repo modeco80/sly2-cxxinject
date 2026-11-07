@@ -37,4 +37,8 @@ BLOB_LOAD_ADDRESS = _OriginalHeapStart;
 
 
 /* CSw */
-CSw__Render = 0x001cda80;
+/* global SW instance. This is a static.*/
+g_sw = 0x003dd490;
+FindObject__3CSwiiP3CLo = 0x0015e938;
+Render__3CSw = 0x001cda80;
+

@@ -15,6 +15,6 @@ class CBinaryInputStream {
 
 public:
 
-}
+};
 
 #endif
