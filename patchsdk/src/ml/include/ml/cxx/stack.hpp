@@ -1,16 +1,17 @@
 #ifndef ML_CXX_STACK_HPP
 #define ML_CXX_STACK_HPP
 
+#include <ml/abort.h>
 #include <ml/cxx/allocator.hpp>
 #include <ml/cxx/vec.hpp>
 
 // TODO: Having this able to use multiple containers instead of just mlVec<> would be nice,
-// but for now it's probably fine.
+// but for now it's probably good enough.
 
 namespace ml {
 
 	/// A stack data structure.
-	template <class T, class Alloc = mlStdAllocator<T>>
+	template <class T, class Alloc = StdAllocator<T>>
 	class Stack {
 		typedef T& Reference;
 		typedef const T& ConstReference;
@@ -29,8 +30,7 @@ namespace ml {
 
 		T pop() {
 			if(empty()) {
-				// TODO: We probably should actually have a crash thing
-				while(true);
+				mlAbort("Attempted to pop an empty Stack<T>");
 			}
 
 			// Pop the item off the stack
@@ -42,7 +42,7 @@ namespace ml {
 
 		Reference peekTop() {
 			if(empty()) {
-				while(true);
+				mlAbort("Attempted to peek the top of an empty Stack<T>");
 			}
 			return items[top];
 		}
