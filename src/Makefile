@@ -1,7 +1,7 @@
 BINDIR = bin/$(REGION)
 OBJDIR = obj/$(REGION)
 
-NAME = sly2_test
+NAME := sly2_test
 TYPE := elf
 DEBUG ?= 0
 

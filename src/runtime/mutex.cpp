@@ -1,5 +1,6 @@
 #include "mutex.hpp"
 #include <ml/string.h>
+#include <ml/abort.h>
 #include "eekernel.h"
 
 Mutex::Mutex() {
@@ -19,7 +20,8 @@ Mutex::~Mutex() {
 }
 
 void Mutex::lock() {
-	i32 thisThread = GetThreadId();
+	const i32 thisThread = GetThreadId();
+
 	if(thisThread == this->owningThread) {
 		this->lockCount++;
 	} else {
@@ -30,6 +32,7 @@ void Mutex::lock() {
 }
 
 void Mutex::unlock() {
+	mlASSERT(this->lockCount > 0 && "Mismatched lock()/unlock() calls. Please fix your code!");
 	if(this->lockCount-- == 0) {
 		this->owningThread = -1;
 		SignalSema(this->semaId);
