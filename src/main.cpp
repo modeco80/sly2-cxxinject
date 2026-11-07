@@ -6,6 +6,9 @@
 
 #include <sly2/sw.h>
 
+// Declare a hook for CSw::Render(). Note that declaring a hook
+// does not immediately hook the function. You need to do that inside of
+// modMain() or a function called by modMain() or a hook.
 CLASS_HOOK0(void, CSw, Render) {
 	CLo* egg = g_sw.FindObject(0x205, OID_jt, nil(CLo*));
 	if(egg != nil(CLo*)) {
@@ -17,14 +20,9 @@ CLASS_HOOK0(void, CSw, Render) {
 
 
 extern "C" int modMain() {
-	utilLogf(LogInfo, "hey lois this is like that one time that i sneaked into the new sly copper game!");
+	utilLogf(LogInfo, "C++ hook initalized");
 
-	// test dynamic heap allocations to make sure that all is working good
-	{
-		ml::String stringTest = "hello world?";
-		utilLogf(LogInfo, "this should say something: %s %08x", stringTest.cStr(), stringTest.cStr());
-	}
-
+	// Hook CSw::Render function.
 	if(!hook_CSw_Render.hook()) {
 		utilLogf(LogErr, "Couldn't hook CSw::Render()?");
 		return 1;
