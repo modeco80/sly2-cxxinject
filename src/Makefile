@@ -19,6 +19,7 @@ RUNTIME := \
 # Make sure to put it after $(RUNTIME) please.
 SOURCES := \
 	$(RUNTIME) \
+	hexdump.cpp \
 	main.cpp
 
 LINKSCRIPT = $(OBJDIR)/blob.ld

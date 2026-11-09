@@ -12,9 +12,16 @@ public:
 	CLo* FindObjectByClass(int grffso, int cid, CLo* ploContext);
 	CLo* FindObjectsByClass(int grffso, int cid, CLo* ploContext, int cploMax, CLo** aplo);
 
+	const char* GetTextString(i32 id);
+
+	void PostLoad();
+
 	void Render();
 };
 
 extern CSw g_sw;
+
+/// Creates a new level object.
+CLo* PloNew(i32 cid, CLo* ploParent, i32 oid, i32 isplice);
 
 #endif

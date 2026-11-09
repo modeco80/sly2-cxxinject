@@ -17,13 +17,18 @@ public:
     // Vtable methods are first
 
 	virtual void InitObject();
-	virtual void vf1();
-	virtual void vf2();
+
+	virtual void OnAddObject();
+	virtual void OnRemoveObject();
 
     virtual void vf3();
     virtual void vf4();
     virtual void vf5();
     virtual void vf6();
+
+	// TODO: Adding these
+	virtual void vfPAD1(); // ?????
+	virtual void vfPAD2();
 
     virtual void LoadFromBrx(CBinaryInputStream* pbis);
     virtual void PostLoad();
@@ -34,7 +39,6 @@ public:
     virtual void vf8();
     virtual void vf9();
     virtual void vf10();
-
     virtual void vf11();
 
     virtual void vf12(); // 0xb4
@@ -46,6 +50,7 @@ public:
     virtual void vf16();
     virtual void vf17();
     virtual void vf18();
+
 
     // Transform-related methods. On CLo, these are stubs (for instance, GetTransform() always
     // returns a static identity XFORM instance on CLo).
@@ -63,13 +68,12 @@ public:
     virtual void vf22();
     virtual void vf23();
     virtual void vf24();
-    virtual void vf25();
 
     /// Matches another object's xform exactly. CLo base implementation
     /// simply copies the transform of the other object using CLo virtual functions.
     virtual void MatchObject(CLo* ploMatch);
 
-    virtual void vf26();
+    virtual void vf25();
 
     /// Not sure what to call these. CloneHelper seems to actually do the,
     /// well, cloning, process, though. The base CLo implementation simply
@@ -78,13 +82,13 @@ public:
     virtual void Clone(CLo* ploClone);
     virtual void CloneHelper(CLo* ploClone);
 
+    virtual void vf26();
     virtual void vf27();
     virtual void vf28();
     virtual void vf29();
     virtual void vf30();
     virtual void vf31();
     virtual void vf32();
-    virtual void vf33();
 
 };
 
