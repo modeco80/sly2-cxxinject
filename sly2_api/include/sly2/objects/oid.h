@@ -11,4 +11,14 @@ enum OID {
     OID_jt = 7
 };
 
+enum CID {
+	CID_BASIC = 0, // CBasic
+	CID_SW = 1, // CSw
+	CID_LO = 2, // CLo
+	CID_XO = 3, // CXo
+
+
+	CID_SPIRE = 39,
+};
+
 #endif
