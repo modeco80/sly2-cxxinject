@@ -5,14 +5,27 @@
 #include <sly2/math.h>
 #include <sly2/bis.h>
 #include <sly2/objects/oid.h>
+#include <sly2/dl.h>
 
 class CLo : public CBasic {
 public:
     // TODO: More members so we can model inheritance graph
     // correctly.
     CLo* ploParent;
-    u32 unk;
+    CLo** pploGroup;
     OID oid;
+	// TODO: Unsure, but there are InitDl calls which match this.
+	DLE dleSame;
+	DLE dleList;
+	u32 visFlags;
+	u32 unkFlags;
+	u32 unk0x34;
+	float flMRD; // Max render distance
+	void* pFkUnk;
+	u32 unkFlags2;
+	u32 unk0x44;
+	u32 unk0x48;
+	u32 unk0x4c;
 
     // Vtable methods are first
 
@@ -48,7 +61,7 @@ public:
 
     virtual void vf15();
     virtual void vf16();
-    virtual void vf17();
+    virtual void  vf17();
     virtual void vf18();
 
 
@@ -90,6 +103,11 @@ public:
     virtual void vf31();
     virtual void vf32();
 
+	/// Sets transform.
+	void SetTransform(XFORM* xfm);
+
 };
 
+// Make sure CLo is the right size
+ML_STATIC_ASSERT(sizeof(CLo) == 0x50);
 #endif

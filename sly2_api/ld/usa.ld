@@ -43,6 +43,9 @@ BLOB_LOAD_ADDRESS = _OriginalHeapStart;
 /* CBasic */
 IsDerivedFrom__6CBasicUi = 0x00132b10;
 
+/* CLo */
+SetTransform__3CLoP5XFORM = 0x001a6be8;
+
 /* CSw */
 /* global SW instance. This is a static.*/
 g_sw = 0x003dd490;
