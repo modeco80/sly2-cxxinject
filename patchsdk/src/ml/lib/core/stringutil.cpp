@@ -1,7 +1,6 @@
 #include <ml/string.h>
-#include "stringutil.hpp"
 
-bool stringStartsWith(const char* __restrict haystack, const char* __restrict needle) {
+cxxbool stringStartsWith(const char* __restrict haystack, const char* __restrict needle) {
 	const u32 haystackLength = strlen(haystack);
 	const u32 needleLength = strlen(needle);
 
@@ -50,3 +49,4 @@ void stringCopyLower(char* __restrict dst, const char* __restrict src) {
 	}
 	dst[len] = '\0';
 }
+

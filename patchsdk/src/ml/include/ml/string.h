@@ -33,6 +33,12 @@ int sprintf(char* out, const char* format, ...);
 /// the [mlFree()] function once the duplicated string is no longer needed.
 char* mlStrDup(const char* pszString);
 
+/// Returns true if the string [haystack] starts with the string [needle].
+cxxbool mlStringStartsWith(const char* __restrict pszString, const char* __restrict pszNeedle);
+
+/// Copies [src] to [dst], lower-casing the string if required.
+void mlStringCopyLower(char* __restrict dst, const char* __restrict src);
+
 #ifdef __cplusplus
 }
 #endif
